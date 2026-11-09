@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sakkarr plan details</title>
+<meta name="description" content="Celebrate every festival with family, from anywhere. Festival sweet hampers delivered across India.">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFF6E9;color:#2A1218;font-family:'DM Sans',system-ui,sans-serif}
+a{color:#7A1033}a:hover{color:#4A0A1F}
+h1,h2,h3{font-family:'Baloo 2',system-ui,sans-serif;margin:0;line-height:1.05}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:700}
+.field input,.field select,.field textarea{min-height:48px;border:1.5px solid #D9C4AE;border-radius:14px;background:#FFFFFF;padding:10px 14px;font-size:16px;font-family:inherit;color:#2A1218;box-sizing:border-box;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.card{background:#FFFFFF;border:1.5px solid #EBD9C6;border-radius:24px;padding:28px;box-sizing:border-box}
+.tick{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.45}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+
+
+<div style="width:100%;overflow:hidden">
+
+<!-- header -->
+<header style="background:#FFF6E9;border-bottom:1px solid #EBD9C6">
+<div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px">
+<a href="index.html" aria-label="sakkarr home" style="display:flex;align-items:center"><img src="images/sakkarr-logo.png" alt="sakkarr" style="height:52px;width:auto;display:block"></a>
+<nav aria-label="Main" style="display:flex;flex-wrap:wrap;gap:6px 28px;font-weight:500;font-size:16px">
+<a href="index.html" style="color:#2A1218;text-decoration:none">Home</a>
+<a href="festivals.html" style="color:#2A1218;text-decoration:none">Festivals</a>
+<a href="#enquire" style="color:#2A1218;text-decoration:none">Contact</a>
+</nav>
+</div>
+</header>
+
+<!-- plan switcher -->
+<section style="padding:48px 0 0">
+<div class="wrap">
+<a href="index.html" style="font-size:15px;font-weight:500">← All plans</a>
+<div role="tablist" aria-label="Plans" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="min-height:48px;padding:0 22px;border-radius:999px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;{{t.style}}">{{t.name}}</button>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- plan hero -->
+<section style="padding:32px 0 0">
+<div class="wrap">
+<div style="background:#7A1033;color:#FFF6E9;border-radius:32px;padding:44px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between;position:relative;overflow:hidden">
+<div aria-hidden="true" style="position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:#8E1A40"></div>
+<div style="flex:1 1 460px;min-width:0;position:relative">
+<p style="font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5C9A8">{{p.count}}</p>
+<h1 style="font-size:clamp(48px,6vw,72px);font-weight:800;margin-top:8px">{{p.name}}</h1>
+<p style="font-size:20px;margin-top:12px;color:#FBE3D0;max-width:520px">{{p.line}}</p>
+</div>
+<div style="position:relative;display:flex;flex-wrap:wrap;gap:12px">
+<a class="btn" href="#enquire" style="background:#F5A623;color:#2A1218">Enquire about {{p.name}}</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- breakdown -->
+<section style="padding:40px 0">
+<div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+
+<div class="card">
+<h2 style="font-size:26px;color:#7A1033">Festivals included</h2>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+<sc-for list="{{p.festivals}}" as="f" hint-placeholder-count="4">
+<span style="display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;background:#FBEBD9;color:#7A1033;font-weight:700;font-size:15px">{{f.n}}</span>
+</sc-for>
+</div>
+<p style="font-size:15px;color:#5B3A42;margin-top:16px">{{p.festNote}}</p>
+</div>
+
+<div class="card">
+<h2 style="font-size:26px;color:#7A1033">In every hamper</h2>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+<div class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6B4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Fresh festival mithai, beautifully packed</div>
+<div class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6B4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>A card signed in your name, or your parents'</div>
+<div class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6B4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Doorstep delivery, guaranteed</div>
+<div class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6B4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Sweets suited to their diet: Jain, diabetic, no onion-garlic</div>
+</div>
+</div>
+
+<div class="card">
+<h2 style="font-size:26px;color:#7A1033">Extras</h2>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+<sc-for list="{{p.extras}}" as="x" hint-placeholder-count="2">
+<div class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>{{x.n}}</div>
+</sc-for>
+</div>
+<div style="margin-top:20px;padding-top:18px;border-top:1px solid #EBD9C6">
+<p style="font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C2410C">Best for</p>
+<p style="font-size:17px;margin-top:6px">{{p.bestFor}}</p>
+</div>
+</div>
+
+</div>
+<div class="wrap" style="margin-top:20px">
+<p style="font-size:16px;color:#5B3A42;text-align:center">Choose a different plan for each family. The more families you add, the less each one costs. Pause anytime.</p>
+</div>
+</section>
+
+<!-- enquiry -->
+<section id="enquire" style="background:#FFFFFF;border-top:1px solid #EBD9C6;padding:72px 0">
+<div class="wrap" style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+
+<div style="flex:1 1 320px;min-width:0">
+<h2 style="font-size:clamp(34px,4vw,46px);font-weight:800;color:#7A1033">Questions? We're here.</h2>
+<p style="font-size:18px;color:#5B3A42;margin-top:12px">Ask about {{p.name}}, pricing for your families, or delivery to a specific town.</p>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:28px">
+<a href="#" style="display:flex;align-items:center;gap:14px;min-height:56px;padding:0 20px;border-radius:18px;background:#E9F5EE;color:#14533B;text-decoration:none;font-weight:700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>Chat on WhatsApp</a>
+<a href="mailto:subscription@sakkarr.com" style="display:flex;align-items:center;gap:14px;min-height:56px;padding:0 20px;border-radius:18px;background:#FBEBD9;color:#7A1033;text-decoration:none;font-weight:700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>subscription@sakkarr.com</a>
+<a href="#" style="display:flex;align-items:center;gap:14px;min-height:56px;padding:0 20px;border-radius:18px;background:#F3EEF8;color:#3B2A6B;text-decoration:none;font-weight:700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Request a call back</a>
+</div>
+</div>
+
+<div style="flex:1.4 1 440px;min-width:0">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<div class="card" style="background:#FFF6E9">
+<h3 style="font-size:26px;color:#7A1033">Get back to me</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px">
+<div class="field"><label for="e-name">Your name</label><input id="e-name" type="text" autocomplete="name"></div>
+<div class="field"><label for="e-email">Email</label><input id="e-email" type="email" autocomplete="email"></div>
+<div class="field"><label for="e-wa">WhatsApp number</label><input id="e-wa" type="tel" autocomplete="tel" placeholder="+1 555 000 0000"></div>
+<div class="field"><label for="e-country">Country you live in</label>
+<select id="e-country"><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>UAE</option><option>Singapore</option><option>Other</option></select></div>
+<div class="field"><label for="e-plan">Plan</label>
+<select id="e-plan"><option>Shagun</option><option>Parv</option><option>Utsav</option><option>Rishta Plus</option><option>Not sure yet</option></select></div>
+<div class="field"><label for="e-fam">Families to send to</label>
+<select id="e-fam"><option>1</option><option>2–3</option><option>4–6</option><option>7 or more</option></select></div>
+</div>
+<div class="field" style="margin-top:16px"><label for="e-msg">Your question</label><textarea id="e-msg" placeholder="Towns, festivals, special requests..."></textarea></div>
+<fieldset style="border:0;padding:0;margin:16px 0 0">
+<legend style="font-size:14px;font-weight:700;padding:0">Best way to reach you</legend>
+<div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:10px;font-size:16px">
+<label style="display:flex;align-items:center;gap:8px;min-height:44px"><input type="radio" name="via" checked style="width:20px;height:20px"> WhatsApp</label>
+<label style="display:flex;align-items:center;gap:8px;min-height:44px"><input type="radio" name="via" style="width:20px;height:20px"> Email</label>
+<label style="display:flex;align-items:center;gap:8px;min-height:44px"><input type="radio" name="via" style="width:20px;height:20px"> Phone call</label>
+</div>
+</fieldset>
+<button type="button" class="btn" onClick="{{send}}" style="margin-top:22px;background:#7A1033;color:#FFF6E9">Send enquiry</button>
+<p style="font-size:14px;color:#5B3A42;margin-top:12px">We reply within one day. Your details are never shared.</p>
+</div>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div class="card" style="background:#E9F5EE;border-color:#BFDCCB;text-align:center;padding:48px 28px">
+<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1F6B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+<h3 style="font-size:30px;color:#14533B;margin-top:14px">Thank you!</h3>
+<p style="font-size:17px;color:#1F4D3A;margin-top:8px">Just press send in your email app. We'll reply within one day.</p>
+<button type="button" onClick="{{reset}}" style="margin-top:18px;min-height:44px;background:transparent;border:0;color:#14533B;font-family:inherit;font-size:15px;font-weight:700;text-decoration:underline;cursor:pointer">Send another question</button>
+</div>
+</sc-if>
+</div>
+
+</div>
+</section>
+
+<!-- faq -->
+<section style="padding:72px 0">
+<div class="wrap" style="max-width:800px">
+<h2 style="font-size:clamp(30px,3.6vw,42px);font-weight:800;color:#7A1033;text-align:center">Common questions</h2>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:28px">
+<details style="background:#FFFFFF;border:1px solid #EBD9C6;border-radius:18px;padding:20px 24px"><summary style="font-weight:700;font-size:18px;cursor:pointer">Can I change festivals later?</summary><p style="font-size:16px;color:#5B3A42;margin-top:10px">Yes, any time before the festival's order date.</p></details>
+<details style="background:#FFFFFF;border:1px solid #EBD9C6;border-radius:18px;padding:20px 24px"><summary style="font-weight:700;font-size:18px;cursor:pointer">Can each family have a different plan?</summary><p style="font-size:16px;color:#5B3A42;margin-top:10px">Yes. Close family on Utsav, distant relatives on Shagun, all in one account.</p></details>
+<details style="background:#FFFFFF;border:1px solid #EBD9C6;border-radius:18px;padding:20px 24px"><summary style="font-weight:700;font-size:18px;cursor:pointer">What if nobody is home?</summary><p style="font-size:16px;color:#5B3A42;margin-top:10px">We call ahead and re-deliver at a time that suits them.</p></details>
+</div>
+</div>
+</section>
+
+<footer style="background:#2A1218;color:#FBE3D0;padding:40px 0">
+<div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font-size:14px">
+<span style="display:inline-flex;background:#FFF8EA;border-radius:16px;padding:8px 14px"><img src="images/sakkarr-logo.png" alt="sakkarr" style="height:40px;width:auto;display:block"></span>
+<span>© 2026 [Company name]</span>
+</div>
+</footer>
+
+</div>
+</template>
+<script src="js/runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var q = parseInt(new URLSearchParams(location.search).get('plan'), 10);
+    this.state = { picked: (q >= 0 && q < 4) ? q : 1, sent: false };
+  }
+  renderVals() {
+    const plans = [
+      { name: 'Shagun', count: '3 festivals a year', line: 'A warm hello on the biggest days of the year.',
+        festivals: ['Diwali', 'Vinayaka Chavithi', 'Your pick: Dussehra, Rakhi, Holi or Eid'],
+        festNote: 'Two fixed festivals, plus one you choose.',
+        extras: ['Reminder before each festival', 'Change your third festival every year'],
+        bestFor: 'Distant relatives you want to stay in touch with.' },
+      { name: 'Parv', count: '4–5 festivals a year', line: 'The main festivals, never missed.',
+        festivals: ['Diwali', 'Rakhi or Bhai Dooj', 'Holi', 'Sankranti, Pongal or Lohri', 'One regional pick'],
+        festNote: 'The regional pick can be Chhath, Onam, Ugadi, Durga Puja and more.',
+        extras: ['Reminder before each festival', 'Swap festivals any time before the order date'],
+        bestFor: 'Close relatives: chacha, mama, bua, cousins.' },
+      { name: 'Utsav', count: '6–7 festivals a year', line: 'Every festival their home celebrates, plus their good news.',
+        festivals: ['Diwali', 'Rakhi or Bhai Dooj', 'Holi', 'Sankranti, Pongal or Lohri', 'Their regional festivals', 'Eid or Christmas, if they celebrate'],
+        festNote: 'Matched to the festivals their own home celebrates.',
+        extras: ['1 good-news gift: a birthday, result or new baby', 'Swap festivals any time'],
+        bestFor: 'The families closest to you.' },
+      { name: 'Rishta Plus', count: '8–10 festivals a year', line: 'Every festival and family occasion, beautifully covered.',
+        festivals: ['All major festivals', 'Their regional festivals', 'Custom family occasions', 'Anniversaries and pujas'],
+        festNote: 'Add your own family dates, like a kuldevta puja.',
+        extras: ['2 good-news gifts a year', 'Dry-fruit upgrade on Diwali', 'Priority delivery'],
+        bestFor: 'Parents and grandparents.' }
+    ];
+    const i = this.state.picked;
+    const raw = plans[i];
+    const p = { ...raw, festivals: raw.festivals.map((n) => ({ n })), extras: raw.extras.map((n) => ({ n })) };
+    const tabs = plans.map((x, k) => ({
+      name: x.name,
+      selected: k === i ? 'true' : 'false',
+      style: k === i ? 'background:#7A1033;color:#FFF6E9;border:2px solid #7A1033' : 'background:#FFFFFF;color:#7A1033;border:2px solid #E3CDB6',
+      pick: () => this.setState({ picked: k, sent: false })
+    }));
+    return {
+      p, tabs,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => {
+        const g = (id) => { const e = document.getElementById(id); return e ? e.value : ''; };
+        let via = ''; document.querySelectorAll('input[name=via]').forEach((r) => { if (r.checked) via = r.parentNode.textContent.trim(); });
+        const body = 'Name: ' + g('e-name') + '\nEmail: ' + g('e-email') + '\nWhatsApp: ' + g('e-wa') + '\nCountry: ' + g('e-country') + '\nPlan: ' + g('e-plan') + '\nFamilies: ' + g('e-fam') + '\nReach me by: ' + via + '\n\n' + g('e-msg');
+        window.location.href = 'mailto:subscription@sakkarr.com?subject=' + encodeURIComponent('sakkarr enquiry: ' + g('e-plan')) + '&body=' + encodeURIComponent(body);
+        this.setState({ sent: true });
+      },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+
+DC.mount(Component);
+</script>
+</body>
+</html>
